@@ -14,7 +14,7 @@ public class Insert {
 //
 //        //StoryElements story = new StoryElements("","");
 
-        MyFrame frame = new MyFrame("","");
+        MyFrame frame = new MyFrame("pin","bed");
 
         try {
            // FileWriter myWriter = new FileWriter("C:\\Users\\sherany\\downloads\\Story");
