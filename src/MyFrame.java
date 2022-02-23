@@ -17,6 +17,9 @@ import java.util.Scanner;
 
 class MyFrame extends JFrame {
 
+    public String txtObjectInput;
+    public String txtPlaceInput;
+
     //private JButton btnSubmit = new JButton("Submit");
     private JButton saveButton = new JButton("Save");
     private JButton loadButton = new JButton("Load");
@@ -47,6 +50,12 @@ class MyFrame extends JFrame {
 
         initComponent();
     }
+
+    public MyFrame(String txtObjectInput, String txtPlaceInput) {
+        this.txtObjectInput = txtObjectInput;
+        this.txtPlaceInput = txtPlaceInput;
+    }
+
 
     private void initComponent() {
 
@@ -87,20 +96,35 @@ class MyFrame extends JFrame {
         return fileNameTextField.getText();
     }
 
+//    public String getTxtObjectInput() {return getTxtObjectInput.getText(); }
+//
+//    public void setTxtObjectResult(String o) {
+//        lblobject.setText(o);
+//    }
+//
+//    public String getTxtPlaceInput() {
+//        return getTxtPlaceInput.getText();
+//    }
+//
+//    public void setTxtPlaceResult(String p) {
+//        lblplace.setText(p);
+//    }
+
+
     public String getTxtObjectInput() {
-        return getTxtObjectInput.getText();
+        return txtObjectInput;
     }
 
-    public void setTxtObjectResult(String o) {
-        lblobject.setText(o);
+    public void setTxtObjectResult(String txtObjectInput) {
+        this.txtObjectInput = txtObjectInput;
     }
 
     public String getTxtPlaceInput() {
-        return getTxtPlaceInput.getText();
+        return txtPlaceInput;
     }
 
-    public void setTxtPlaceResult(String p) {
-        lblplace.setText(p);
+    public void setTxtPlaceInput(String txtObjectInput) {
+        this.txtPlaceInput = txtPlaceInput;
     }
 
 
