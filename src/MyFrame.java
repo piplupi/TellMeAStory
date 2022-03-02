@@ -30,14 +30,16 @@ import java.util.regex.Pattern;
 
 class MyFrame extends JFrame {
 
-    public String txtObjectInput;
-    public String txtPlaceInput;
+//    public String txtObjectInput;
+//    public String txtPlaceInput;
 
     //private JButton btnSubmit = new JButton("Submit");
     private JButton saveButton = new JButton("Save");
     private JButton loadButton = new JButton("Load");
     private JButton clearButton = new JButton("Clear");
-    private JButton replaceButton = new JButton("Edit");
+    private JButton editButton = new JButton("Edit");
+    private JButton findFileButton = new JButton("Find file");
+
 
     StoryButtonListener buttonListener = new StoryButtonListener();
 
@@ -49,16 +51,16 @@ class MyFrame extends JFrame {
 //    private JTextField txtobject = new JTextField();
 //    private JTextField txtplace = new JTextField();
 
-    private JTextField getTxtObjectInput = new JTextField();
-    private JTextField getTxtPlaceInput = new JTextField();
+//    private JTextField getTxtObjectInput = new JTextField();
+//    private JTextField getTxtPlaceInput = new JTextField();
 
 
     private JLabel lblfile = new JLabel("File :");
-    private JLabel lblobject = new JLabel("Object :");
-    private JLabel lblplace = new JLabel("Place :");
-
-    private JLabel lblinstr = new JLabel("Enter Story input, then save");
-    private Object MyFrame;
+//    private JLabel lblobject = new JLabel("Object :");
+//    private JLabel lblplace = new JLabel("Place :");
+//
+//    private JLabel lblinstr = new JLabel("Enter Story input, then save");
+//    private Object MyFrame;
 
     public MyFrame() {
         setTitle("Storymaker");
@@ -70,53 +72,57 @@ class MyFrame extends JFrame {
         initComponent();
     }
 
-    public MyFrame(String txtObjectInput, String txtPlaceInput) {
-        this.txtObjectInput = txtObjectInput;
-        this.txtPlaceInput = txtPlaceInput;
-    }
-
+//    public MyFrame(String txtObjectInput, String txtPlaceInput) {
+//        this.txtObjectInput = txtObjectInput;
+//        this.txtPlaceInput = txtPlaceInput;
+//    }
 
     private void initComponent() {
 
-        fileNameTextField.setBounds(100, 10, 100, 20);
-        getTxtObjectInput.setBounds(100, 35, 100, 20);
-        getTxtPlaceInput.setBounds(100, 65, 100, 20);
+//        fileNameTextField.setBounds(100, 10, 100, 20);
+//        getTxtObjectInput.setBounds(100, 35, 100, 20);
+//        getTxtPlaceInput.setBounds(100, 65, 100, 20);
 
         lblfile.setBounds(20, 10, 100, 20);
-        lblobject.setBounds(20, 35, 100, 20);
-        lblplace.setBounds(20, 65, 100, 20);
+//        lblobject.setBounds(20, 35, 100, 20);
+//        lblplace.setBounds(20, 65, 100, 20);
 
-        lblinstr.setBounds(210, 35, 200, 20);
+//        lblinstr.setBounds(210, 35, 200, 20);
 
         textArea.setBounds(0, 90, 800, 240);
+
 
         saveButton.setBounds(20, 340, 80, 20);
         loadButton.setBounds(120, 340, 80, 20);
         clearButton.setBounds(220, 340, 80, 20);
-        replaceButton.setBounds(320, 340, 80, 20);
+        editButton.setBounds(320, 340, 80, 20);
+        findFileButton.setBounds(20, 10, 100, 20);
 
 
-        add(lblfile);
-        add(lblobject);
-        add(lblplace);
+//        add(lblfile);
+//        add(lblobject);
+//        add(lblplace);
+//
+//        add(lblinstr);
 
-        add(lblinstr);
-
-        add(fileNameTextField);
-        add(getTxtObjectInput);
-        add(getTxtPlaceInput);
+//        add(fileNameTextField);
+//        add(getTxtObjectInput);
+//        add(getTxtPlaceInput);
 
         add(textArea);
 
         add(saveButton);
         add(loadButton);
         add(clearButton);
-        add(replaceButton);
+        add(editButton);
+        add(findFileButton);
 
         saveButton.addActionListener(buttonListener);
         loadButton.addActionListener(buttonListener);
         clearButton.addActionListener(buttonListener);
-        replaceButton.addActionListener(buttonListener);
+        editButton.addActionListener(buttonListener);
+        findFileButton.addActionListener(buttonListener);
+
 
     }
 
@@ -139,21 +145,21 @@ class MyFrame extends JFrame {
 //    }
 
 
-    public String getTxtObjectInput() {
-        return txtObjectInput;
-    }
-
-    public void setTxtObjectResult(String txtObjectInput) {
-        this.txtObjectInput = txtObjectInput;
-    }
-
-    public String getTxtPlaceInput() {
-        return txtPlaceInput;
-    }
-
-    public void setTxtPlaceInput(String txtObjectInput) {
-        this.txtPlaceInput = txtPlaceInput;
-    }
+//    public String getTxtObjectInput() {
+//        return txtObjectInput;
+//    }
+//
+//    public void setTxtObjectResult(String txtObjectInput) {
+//        this.txtObjectInput = txtObjectInput;
+//    }
+//
+//    public String getTxtPlaceInput() {
+//        return txtPlaceInput;
+//    }
+//
+//    public void setTxtPlaceInput(String txtObjectInput) {
+//        this.txtPlaceInput = txtPlaceInput;
+//    }
 
 
     private void readFile(String fileName) {
@@ -205,9 +211,62 @@ class MyFrame extends JFrame {
         public void actionPerformed(ActionEvent e) {
             JButton sourceButton = (JButton) e.getSource();
             // Figure out which button was pressed
+
             if (sourceButton.equals(loadButton)) {
                 System.out.println("Load button pressed");
+//                readFile(getFileName());
+
+
+            } else if (sourceButton.equals(findFileButton)) {
+                System.out.println("Find file button pressed");
+                MyFrame m = new MyFrame();
+
+                JDialog f = new JDialog(m, "Find File");
+
+                // setsize of dialog
+                f.setBounds(100, 100, 421, 200);
+                f.setLocationRelativeTo(m);
+                f.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                f.getContentPane().setLayout(null);
+
+                //all j components
+                JPanel contentPanel = new JPanel();
+//                JTextField fileNameTextField = new JTextField();
+                JButton findButton = new JButton("Find");
+                JButton cancelButton = new JButton("Cancel");
+
+                contentPanel.setBounds(0, 0, 405, 208);
+                f.getContentPane().add(contentPanel);
+                contentPanel.setLayout(null);
+
+                fileNameTextField.setBounds(82, 21, 220, 30);
+                contentPanel.add(fileNameTextField);
+                fileNameTextField.setColumns(10);
+
+                findButton.setBounds(200, 125, 89, 30);
+                contentPanel.add(findButton);
+
+                cancelButton.setBounds(306, 125, 89, 30);
+                contentPanel.add(cancelButton);
+
+                //cancel button
+                cancelButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        f.dispose();
+                    }
+                });
+
+                findButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        System.out.println("Find button pressed");
                 readFile(getFileName());
+
+                    }
+                });
+
+
+                f.setVisible(true);
+
 
             } else if (sourceButton.equals(saveButton)) {
                 System.out.println("Save button pressed");
@@ -236,19 +295,17 @@ class MyFrame extends JFrame {
 //                replaceButton.addActionListener(this);
 //                add(replaceButton);
 //                new Find(textArea);
-            } else if (sourceButton.equals(replaceButton)) {
-                System.out.println("Replace button pressed");
+            } else if (sourceButton.equals(editButton)) {
+                System.out.println("Edit button pressed");
 
                 MyFrame m = new MyFrame();
 
                 JDialog a = new JDialog(m, "Replace");
 
-                // create a label
-
                 // setsize of dialog
                 a.setBounds(100, 100, 421, 247);
                 a.setLocationRelativeTo(m);
-//                a.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                a.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                 a.getContentPane().setLayout(null);
 
                 //all j components
@@ -257,7 +314,8 @@ class MyFrame extends JFrame {
                 JTextField replaceField = new JTextField();
                 JButton findNextButton = new JButton("Find Next");
                 JCheckBox wrapAroundButton = new JCheckBox("Wrap around");
-                JButton replaceAllButton = new JButton("ReplaceB");
+                JButton replaceAllButton = new JButton("Replace All");
+//                JButton replaceButton = new JButton("Replace");
                 JButton cancelButton = new JButton("Cancel");
 
                 contentPanel.setBounds(0, 0, 405, 208);
@@ -267,18 +325,19 @@ class MyFrame extends JFrame {
                 findField.addKeyListener(new KeyAdapter() {
                     @Override
                     public void keyTyped(KeyEvent e) {
-                        if(findField.getText() != null) {
+                        if (findField.getText() != null) {
                             findNextButton.setEnabled(true);
-                            replaceButton.setEnabled(true);
+//                            replaceButton.setEnabled(true);
                             replaceAllButton.setEnabled(true);
-                        }else {
+                        } else {
                             findNextButton.setEnabled(false);
-                            replaceButton.setEnabled(false);
+//                            replaceButton.setEnabled(false);
                             replaceAllButton.setEnabled(false);
                         }
                     }
                 });
 
+                //find field
                 findField.setBounds(82, 21, 220, 30);
                 contentPanel.add(findField);
                 findField.setColumns(10);
@@ -375,9 +434,11 @@ class MyFrame extends JFrame {
 //
 //                    }
 //                });
-                replaceButton.setEnabled(false);
-                replaceButton.setBounds(306, 55, 89, 30);
-                contentPanel.add(replaceButton);
+
+                //
+//                replaceButton.setEnabled(false);
+//                replaceButton.setBounds(306, 55, 89, 30);
+//                contentPanel.add(replaceButton);
 
 
                 //replace button
@@ -389,8 +450,8 @@ class MyFrame extends JFrame {
                         Matcher m = p.matcher(textArea.getText());
                         //start from starting and replace all matching with replace Text
                         int currentposition = 0;
-                        while(m.find(currentposition)) {
-                            textArea.select(m.start(),m.end());
+                        while (m.find(currentposition)) {
+                            textArea.select(m.start(), m.end());
                             textArea.replaceSelection(repalceText);
                             //get position and matcher of new content
                             currentposition = textArea.getCaretPosition();
