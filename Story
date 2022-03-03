@@ -1,1 +1,1 @@
-there was once a cursed %s in a %s
+there was once a cursed {{object}} in a {{place}}
