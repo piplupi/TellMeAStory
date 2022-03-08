@@ -21,4 +21,3 @@ Inlever:
 Werkende java code inclussief tests met screenshots van de applicatie in werking en van het test rapport.
 De input file(s) die je hebt gebruikt.
 Zet alles in een zip file met je studentenummer en naam.
-
